@@ -82,6 +82,10 @@ repos:
     url: "https://github.com/rust-embedded/meta-rust-bin.git"
     refspec: f8e79ed922c765fca224b2318ab172e0b59f4a4d
 
+  # QT5.15.x for gatesgarth
+  meta-qt5:
+    url: "https://code.qt.io/yocto/meta-qt5.git"
+    refspec: 2b33a5d5e888370bb56685b86aa82b73624f19f0
 
 bblayers_conf_header:
   standard: |

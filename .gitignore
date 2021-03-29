@@ -10,3 +10,4 @@ meta-python2
 meta-rust-bin
 meta-swupdate
 poky
+meta-qt5
