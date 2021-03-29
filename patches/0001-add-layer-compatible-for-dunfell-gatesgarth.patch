@@ -1,0 +1,22 @@
+From 87c317ca94791bbf02c58e3662b83092ace09030 Mon Sep 17 00:00:00 2001
+From: KunYi <kunyi.chen@gmail.com>
+Date: Tue, 30 Mar 2021 09:55:47 +0800
+Subject: [PATCH] add layer compatible for dunfell/gatesgarth
+
+---
+ conf/layer.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/conf/layer.conf b/conf/layer.conf
+index f1dc213..b991697 100644
+--- a/conf/layer.conf
++++ b/conf/layer.conf
+@@ -8,4 +8,4 @@ BBFILE_COLLECTIONS += "imx-demo"
+ BBFILE_PATTERN_imx-demo := "^${LAYERDIR}/"
+ BBFILE_PRIORITY_imx-demo = "7"
+
+-LAYERSERIES_COMPAT_imx-demo = "sumo thud warrior zeus"
++LAYERSERIES_COMPAT_imx-demo = "sumo thud warrior zeus dunfell gatesgarth"
+--
+2.31.1
+

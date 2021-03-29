@@ -27,6 +27,8 @@ repos:
         meta-networking:
         meta-python:
         meta-filesystems:
+        meta-gnome:
+
     #patches:
     #  01-fixed-build-error-for-websocketpp:
     #    path: patches/0001-fixed-build-error-for-websocketpp.patch
@@ -42,9 +44,10 @@ repos:
 
   meta-browser:
     url: "https://github.com/OSSystems/meta-browser.git"
-    refspec: d6b1385daf2fd9178ba7bed5ba1eb909e47e8347
+    refspec: 15228b01903d4ca801916e55c7618fa5a71019b7
     layers:
         meta-chromium:
+        meta-firefox:
 
   meta-freescale:
     url: "https://github.com/Freescale/meta-freescale.git"
@@ -74,18 +77,26 @@ repos:
     url: "https://git.openembedded.org/meta-python2"
     refspec: 56288c2599d7a6df6e34e8b07b7dc3d4d2d71e30
 
-#  meta-rust:
-#    url: "https://github.com/meta-rust/meta-rust.git"
-#    refspec: 0fffd992ee560bbfd682d3ef94b7636670e6fd56
+  meta-rust:
+    url: "https://github.com/meta-rust/meta-rust.git"
+    refspec: 0fffd992ee560bbfd682d3ef94b7636670e6fd56
 
-  meta-rust-bin:
-    url: "https://github.com/rust-embedded/meta-rust-bin.git"
-    refspec: f8e79ed922c765fca224b2318ab172e0b59f4a4d
+#  meta-rust-bin:
+#    url: "https://github.com/rust-embedded/meta-rust-bin.git"
+#    refspec: f8e79ed922c765fca224b2318ab172e0b59f4a4d
 
   # QT5.15.x for gatesgarth
   meta-qt5:
     url: "https://code.qt.io/yocto/meta-qt5.git"
     refspec: 2b33a5d5e888370bb56685b86aa82b73624f19f0
+
+  meta-nxp-demo-experience:
+    url: https://source.codeaurora.org/external/imxsupport/meta-nxp-demo-experience
+    refspec: c7263d9f3cc7bbf44e7164ffeda494cf283d3dec
+    patches:
+      01_add_compatible:
+        repo: adu
+        path: patches/0001-add-layer-compatible-for-dunfell-gatesgarth.patch
 
 bblayers_conf_header:
   standard: |
@@ -204,3 +215,5 @@ local_conf_header:
     HW_REV = "1.0"
 
     PREFERRED_PROVIDER_virtual/kernel = "linux-imx"
+
+    BB_NUMBER_THREADS = "2"

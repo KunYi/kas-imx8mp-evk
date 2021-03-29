@@ -1,0 +1,22 @@
+#  Sparktech/Uwings for imx8mp-evk
+#
+# Authors:
+#   KunYi <kunyi.chen@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+#
+header:
+  version: 10
+  includes:
+    - repo: adu
+      file: imx8mp-evk.yaml
+
+repos:
+  adu:
+
+distro: fsl-imx-xwayland
+target: imx-image-full
+
+local_conf_header:
+  distro: |
+    DISTRO ?= "fsl-imx-xwayland"

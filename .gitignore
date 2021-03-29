@@ -11,3 +11,5 @@ meta-rust-bin
 meta-swupdate
 poky
 meta-qt5
+meta-nxp-demo-experience
+meta-rust
