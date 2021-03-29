@@ -1,0 +1,12 @@
+build
+meta-browser
+meta-clang
+meta-freescale
+meta-freescale-3rdparty
+meta-freescale-distro
+meta-imx
+meta-openembedded
+meta-python2
+meta-rust-bin
+meta-swupdate
+poky
