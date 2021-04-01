@@ -1,0 +1,47 @@
+# Wic Kickstart file that defines which partitions are present in wic images.
+# See https://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html#ref-kickstart
+#
+# short-description: Create SD card image with a boot partition
+# long-description:
+# Create an image that can be written onto a SD card using dd for use
+# with i.MX SoC family
+# It uses u-boot + other binaries gathered together on imx-boot file
+#
+# The disk layout used is:
+#  - ---------- -------------- --------------------- --------------------- ---------- ---------------
+# | | imx-boot |     boot     |    rootfs/rootA     |    rootfs/rootB     |   ADU    |     Data      |
+#  - ---------- -------------- --------------------- --------------------- ---------- ---------------
+# ^ ^          ^              ^                     ^                     ^          ^               ^
+# | |          |              |                     |                     |          |               |
+# 0 |        8MiB          136MiB		 4232MiB               8328MiB     8360MiB         14504MiB
+#   32 32 or 33kiB, see reference manual
+#
+# boot,		128MiB
+# rootA,	4096MiB
+# rootB,	4096MiB
+# adu,		32MiB
+# data,		6144MiB(6GiB)
+#
+part u-boot --source rawcopy --sourceparams="file=imx-boot" --ondisk mmcblk --no-table --align 32
+
+# Boot partition containing bootloader.
+part /boot --source bootimg-partition --ondisk mmcblk --fstype=vfat --label boot --active --use-uuid --uuid "bc13c2ff-59e6-4262-a352-b275fd6f7172" --align 8192  --fixed-size 128 --fsoptions "defaults,sync"
+
+# Primary rootfs partition, This must be the second entry.
+# Partition size: 4096MiB
+part /	--source rootfs --ondisk mmcblk --fstype=ext4 --label rootA --use-uuid --uuid "b921b045-1df0-41c3-af44-4c6f280d3fae" --align 8192  --fixed-size  4096
+
+# Secondary rootfs partition used for A/B updating. Starts as a copy of the primary rootfs partition.
+# This must be the third entry.
+# Partition size: 4096MiB
+part /mnt/altrfs --source rootfs --ondisk mmcblk --fstype=ext4 --label rootB --use-uuid --uuid "b921b046-1df0-41c3-af44-4c6f280d3fae" --align 8192  --fixed-size  4096
+
+# ADU parition for ADU specfic configuration and logs.
+# This partition allows configuration and logs to persist across updates (similar to a user data partition).
+# The vfat file type allows this partition to be viewed and written to from Linux or Windows.
+part /adu --ondisk mmcblk0 --fstype=vfat --label adu --use-uuid --fixed-size 32
+
+# Data partition for user data
+part --ondisk mmcblk0 --fstype ext4 --label data --use-uuid --uuid "0fc63daf-8483-4772-8e79-3d69d8477de4" --fixed-size 6144
+
+bootloader --ptable msdos

@@ -232,4 +232,6 @@ local_conf_header:
     MODEL_NAME = "imx8mp-evk"
     HW_REV = "1.0"
 
+    # for adu/swupdate
+    # SOC_DEFAULT_WKS_FILE_mx8 = "adu-imx8mp.wks"
     PREFERRED_PROVIDER_virtual/kernel = "linux-imx"
