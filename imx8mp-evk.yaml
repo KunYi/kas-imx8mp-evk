@@ -66,7 +66,7 @@ repos:
     refspec: 50eb2b32e7702bc435049bfe0a98fc65c864c106
 
   meta-imx:
-    url: "https://source.codeaurora.org/external/imx/meta-imx.git"
+    url: "https://github.com/nxp-imx/meta-imx.git"
     refspec: 478d788fc1ecb4783a2702752a61f1035fe9ab9f
     layers:
       meta-bsp:
@@ -91,7 +91,7 @@ repos:
     refspec: 2b33a5d5e888370bb56685b86aa82b73624f19f0
 
   meta-nxp-demo-experience:
-    url: https://source.codeaurora.org/external/imxsupport/meta-nxp-demo-experience
+    url: https://github.com/nxp-imx-support/meta-nxp-demo-experience.git
     refspec: c7263d9f3cc7bbf44e7164ffeda494cf283d3dec
     patches:
       01_add_compatible:

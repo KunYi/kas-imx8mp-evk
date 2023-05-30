@@ -1,11 +1,12 @@
-From 87c317ca94791bbf02c58e3662b83092ace09030 Mon Sep 17 00:00:00 2001
-From: KunYi <kunyi.chen@gmail.com>
-Date: Tue, 30 Mar 2021 09:55:47 +0800
+From c63ba7a021a4fb1ad2db5668fcd2244f8f8862b0 Mon Sep 17 00:00:00 2001
+From: kas <kas@example.com>
+Date: Tue, 30 May 2023 10:23:39 +0000
 Subject: [PATCH] add layer compatible for dunfell/gatesgarth
 
 ---
- conf/layer.conf | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ conf/layer.conf                                               | 2 +-
+ .../nxp-demo-experience/nxp-demo-experience_1.0.bb            | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/conf/layer.conf b/conf/layer.conf
 index f1dc213..b991697 100644
@@ -14,9 +15,24 @@ index f1dc213..b991697 100644
 @@ -8,4 +8,4 @@ BBFILE_COLLECTIONS += "imx-demo"
  BBFILE_PATTERN_imx-demo := "^${LAYERDIR}/"
  BBFILE_PRIORITY_imx-demo = "7"
-
+ 
 -LAYERSERIES_COMPAT_imx-demo = "sumo thud warrior zeus"
 +LAYERSERIES_COMPAT_imx-demo = "sumo thud warrior zeus dunfell gatesgarth"
---
-2.31.1
+diff --git a/recipes-nxp-demo-experience/nxp-demo-experience/nxp-demo-experience_1.0.bb b/recipes-nxp-demo-experience/nxp-demo-experience/nxp-demo-experience_1.0.bb
+index 5fb621c..7fc46c0 100644
+--- a/recipes-nxp-demo-experience/nxp-demo-experience/nxp-demo-experience_1.0.bb
++++ b/recipes-nxp-demo-experience/nxp-demo-experience/nxp-demo-experience_1.0.bb
+@@ -8,8 +8,8 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
+ S = "${WORKDIR}/git"
+ 
+ SRCBRANCH = "zeus-5.4.24-2.1.0"
+-NXP_DEMO_SRC ?= "git://source.codeaurora.org/external/imxsupport/nxp-demo-experience;protocol=https"
+-NXP_DEMO_LIST_SRC ?= "git://source.codeaurora.org/external/imxsupport/nxp-demo-experience-demos-list;protocol=https"
++NXP_DEMO_SRC ?= "git://github.com/nxp-imx-support/nxp-demo-experience;protocol=https"
++NXP_DEMO_LIST_SRC ?= "git://github.com/nxp-imx-support/nxp-demo-experience-demos-list;protocol=https"
+ 
+ SRC_URI = " \
+     ${NXP_DEMO_SRC};branch=${SRCBRANCH};name=nxp-demo-experience \
+-- 
+2.40.1
 
